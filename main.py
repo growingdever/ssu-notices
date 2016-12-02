@@ -3,6 +3,7 @@ import os
 from slacker import Slacker
 slack = Slacker(os.environ['SLACK_API_KEY'])
 bot_name = 'lokibot'
+broadcast_channel = '#ssu-notices'
 
 def create_link_message(semi_title, title, link):
 	return {
@@ -73,6 +74,6 @@ def celery_task1():
 			create_link_message('학교 전체 공지사항', title, new_model.document_link)
 		]
 
-		slack.chat.post_message('#ssu-notice', None, username=bot_name, attachments=attachments)
+		slack.chat.post_message(broadcast_channel, None, username=bot_name, attachments=attachments)
 
 	session.commit()
