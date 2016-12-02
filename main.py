@@ -73,6 +73,6 @@ def celery_task1():
 			create_link_message('학교 전체 공지사항', title, new_model.document_link)
 		]
 
-		slack.chat.post_message('#bot', None, username=bot_name, attachments=attachments)
+		slack.chat.post_message('#ssu-notice', None, username=bot_name, attachments=attachments)
 
 	session.commit()
